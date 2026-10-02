@@ -1,0 +1,1855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SilverLining | Learn English</title>
+
+  <style>
+    :root {
+      --primary: #7189c9;
+      --primary-dark: #526ba9;
+      --secondary: #dce8ff;
+      --background: #f7f8fc;
+      --white: #ffffff;
+      --text: #30384b;
+      --muted: #788197;
+      --pink: #f9e1eb;
+      --green: #e0f2e8;
+      --yellow: #fff1ce;
+      --border: #e7eaf2;
+      --shadow: 0 8px 25px rgba(70, 85, 130, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    button:focus-visible {
+      outline: 3px solid #a7baf0;
+      outline-offset: 3px;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: auto;
+    }
+
+    /* HEADER */
+
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .navbar {
+      min-height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      color: var(--primary-dark);
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: #e7a9c2;
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn {
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-btn:hover,
+    .nav-btn.active {
+      background: var(--secondary);
+      color: var(--primary-dark);
+    }
+
+    /* GENERAL */
+
+    main {
+      min-height: 75vh;
+      padding: 35px 0 60px;
+    }
+
+    .page {
+      display: none;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(5px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1, h2, h3 {
+      line-height: 1.3;
+    }
+
+    h1 {
+      font-size: clamp(30px, 5vw, 46px);
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      font-size: 27px;
+      margin-bottom: 12px;
+    }
+
+    h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 12px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .eyebrow {
+      color: var(--primary-dark);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-heading {
+      margin-bottom: 25px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      max-width: 650px;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      border: none;
+      border-radius: 12px;
+      padding: 12px 18px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .primary-btn {
+      background: var(--primary);
+      color: white;
+    }
+
+    .primary-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .secondary-btn {
+      background: var(--secondary);
+      color: var(--primary-dark);
+    }
+
+    .secondary-btn:hover {
+      background: #cbd9fa;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .back-btn {
+      border: none;
+      background: transparent;
+      color: var(--primary-dark);
+      font-weight: 700;
+      padding: 8px 0;
+      margin-bottom: 18px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    /* HOME */
+
+    .hero {
+      background: linear-gradient(120deg, #e7edff, #f9e7f0);
+      border-radius: 28px;
+      padding: clamp(28px, 6vw, 60px);
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      align-items: center;
+      gap: 25px;
+      overflow: hidden;
+    }
+
+    .hero p {
+      max-width: 540px;
+      color: #626d85;
+      font-size: 16px;
+    }
+
+    .hero-art {
+      min-height: 210px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 105px;
+      background: rgba(255, 255, 255, 0.45);
+      border-radius: 50%;
+      width: 210px;
+      height: 210px;
+      margin: auto;
+    }
+
+    .home-features {
+      margin-top: 40px;
+    }
+
+    .feature-card {
+      padding: 22px;
+    }
+
+    .feature-icon {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .welcome-note {
+      margin-top: 25px;
+      background: var(--green);
+      border-radius: 16px;
+      padding: 20px;
+      color: #426b56;
+    }
+
+    /* LEARN */
+
+    .topic-card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-height: 225px;
+    }
+
+    .topic-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background: var(--secondary);
+      color: var(--primary-dark);
+      border-radius: 12px;
+      font-weight: 800;
+      margin-bottom: 17px;
+    }
+
+    .topic-card p {
+      color: var(--muted);
+      font-size: 14px;
+      flex: 1;
+    }
+
+    .topic-card .secondary-btn {
+      margin-top: 10px;
+    }
+
+    .level-label {
+      display: inline-block;
+      background: var(--green);
+      color: #47765c;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    /* LESSON */
+
+    .lesson-header {
+      background: linear-gradient(120deg, #e7edff, #f9e7f0);
+      border-radius: 22px;
+      padding: 28px;
+      margin-bottom: 22px;
+    }
+
+    .lesson-section {
+      margin-bottom: 18px;
+    }
+
+    .lesson-section ul,
+    .lesson-section ol {
+      padding-left: 22px;
+      margin: 10px 0;
+    }
+
+    .lesson-section li {
+      margin-bottom: 8px;
+    }
+
+    .example-box {
+      background: #f7f8fc;
+      border: 1px solid var(--border);
+      padding: 14px;
+      border-radius: 12px;
+      margin: 10px 0;
+    }
+
+    .example-box p {
+      margin-bottom: 5px;
+    }
+
+    .example-box .secondary-btn {
+      padding: 6px 10px;
+      font-size: 12px;
+      margin-left: 5px;
+    }
+
+    .remember-box {
+      background: var(--yellow);
+      border-radius: 16px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    /* FLASHCARDS */
+
+    .flashcard-area {
+      max-width: 600px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .flashcard {
+      background: linear-gradient(145deg, #e8edff, #f9e6f0);
+      border: 1px solid #e3e6f4;
+      border-radius: 25px;
+      min-height: 300px;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .flashcard:focus-visible {
+      outline: 3px solid var(--primary);
+      outline-offset: 4px;
+    }
+
+    .flashcard .word {
+      font-size: clamp(32px, 7vw, 48px);
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin: 20px 0 8px;
+      overflow-wrap: anywhere;
+    }
+
+    .flashcard .translation {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .flashcard .example {
+      color: #626d85;
+      margin-top: 18px;
+    }
+
+    .flash-hint {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 18px;
+    }
+
+    .flashcard .primary-btn {
+      margin-top: 14px;
+    }
+
+    .flash-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 22px;
+      flex-wrap: wrap;
+    }
+
+    .progress-track {
+      height: 7px;
+      width: 100%;
+      background: #e7eaf2;
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--primary);
+      transition: width 0.2s;
+    }
+
+    /* PRACTICE */
+
+    .quiz-card {
+      max-width: 760px;
+      margin: auto;
+    }
+
+    .quiz-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .question {
+      font-size: 21px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .question-translation {
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .options {
+      display: grid;
+      gap: 12px;
+    }
+
+    .option-btn {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      text-align: left;
+      padding: 15px;
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    .option-btn:hover:not(:disabled) {
+      border-color: var(--primary);
+      background: #f5f7ff;
+    }
+
+    .option-btn.correct {
+      border-color: #69ad86;
+      background: #e5f5eb;
+    }
+
+    .option-btn.incorrect {
+      border-color: #d98292;
+      background: #fff0f2;
+    }
+
+    .feedback {
+      padding: 14px;
+      border-radius: 12px;
+      margin-top: 18px;
+      display: none;
+    }
+
+    .feedback.show {
+      display: block;
+    }
+
+    .feedback.good {
+      background: var(--green);
+      color: #426b56;
+    }
+
+    .feedback.bad {
+      background: #fff0f2;
+      color: #9a4f60;
+    }
+
+    .result-box {
+      text-align: center;
+      padding: 30px 15px;
+    }
+
+    .result-score {
+      font-size: 42px;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin: 15px 0;
+    }
+
+    .practice-topics {
+      margin-top: 25px;
+    }
+
+    .practice-topic-btn {
+      width: 100%;
+      text-align: left;
+      padding: 18px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .practice-topic-btn:hover {
+      border-color: var(--primary);
+      background: #f5f7ff;
+    }
+
+    .practice-topic-btn span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 400;
+      margin-top: 5px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 25px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 750px) {
+      .navbar {
+        padding: 15px 0;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 4px;
+      }
+
+      .nav-btn {
+        padding: 10px 4px;
+        font-size: 12px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-art {
+        width: 145px;
+        height: 145px;
+        min-height: 145px;
+        font-size: 75px;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .card {
+        padding: 18px;
+      }
+
+      .topic-card {
+        min-height: 245px;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topic-card {
+        min-height: auto;
+      }
+
+      .hero {
+        padding: 25px 20px;
+      }
+
+      .flashcard {
+        min-height: 280px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container navbar">
+      <div class="logo">Silver<span>Lining</span></div>
+
+      <nav aria-label="Main navigation">
+        <button class="nav-btn active" data-page="home"
+          onclick="showPage('home')">Home</button>
+
+        <button class="nav-btn" data-page="learn"
+          onclick="showPage('learn')">Learn</button>
+
+        <button class="nav-btn" data-page="flashcards"
+          onclick="showPage('flashcards')">Flashcards</button>
+
+        <button class="nav-btn" data-page="practice"
+          onclick="showPage('practice')">Practice</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- HOME PAGE -->
+    <section id="home" class="page active">
+      <div class="hero">
+        <div>
+          <div class="eyebrow">Your English Learning Journey</div>
+
+          <h1>Learn English,<br>One Step at a Time.</h1>
+
+          <p>
+            Build your English skills through simple lessons,
+            useful vocabulary, and fun interactive exercises.
+            Mulai belajar bahasa Inggris dari dasar, sedikit demi sedikit.
+          </p>
+
+          <div class="button-row">
+            <button class="primary-btn" onclick="showPage('learn')">
+              Start Learning →
+            </button>
+
+            <button class="secondary-btn"
+              onclick="showPage('practice')">
+              Try Practice
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">📚</div>
+      </div>
+
+      <section class="home-features">
+        <div class="section-heading">
+          <div class="eyebrow">What You Can Do</div>
+          <h2>Your Learning Space</h2>
+          <p>
+            Pelajari bahasa Inggris melalui tiga cara yang saling melengkapi.
+          </p>
+        </div>
+
+        <div class="grid">
+          <div class="card feature-card">
+            <div class="feature-icon">📖</div>
+            <h3>Learn</h3>
+            <p>
+              Understand basic English grammar and expressions
+              with simple explanations.
+              Pahami tata bahasa dan ungkapan dasar.
+            </p>
+            <button class="secondary-btn"
+              onclick="showPage('learn')">Explore Lessons</button>
+          </div>
+
+          <div class="card feature-card">
+            <div class="feature-icon">🗂️</div>
+            <h3>Flashcards</h3>
+            <p>
+              Learn useful words and their meanings.
+              Hafalkan kosakata melalui kartu interaktif.
+            </p>
+            <button class="secondary-btn"
+              onclick="showPage('flashcards')">Study Words</button>
+          </div>
+
+          <div class="card feature-card">
+            <div class="feature-icon">✏️</div>
+            <h3>Practice</h3>
+            <p>
+              Test your understanding with short quizzes.
+              Uji pemahamanmu melalui latihan singkat.
+            </p>
+            <button class="secondary-btn"
+              onclick="showPage('practice')">Start Practice</button>
+          </div>
+        </div>
+
+        <div class="welcome-note">
+          <strong>Remember:</strong>
+          Learning a language takes time. Tidak perlu terburu-buru.
+          Keep learning and celebrate every small improvement!
+        </div>
+      </section>
+    </section>
+
+    <!-- LEARN PAGE -->
+    <section id="learn" class="page">
+      <div class="section-heading">
+        <div class="eyebrow">Beginner Level</div>
+        <h1>Explore Lessons</h1>
+        <p>
+          Choose a topic and learn at your own pace.
+          Pilih materi yang ingin kamu pelajari. Kamu bebas menentukan urutan.
+        </p>
+      </div>
+
+      <div class="grid" id="lessonGrid"></div>
+    </section>
+
+    <!-- LESSON DETAIL PAGE -->
+    <section id="lessonDetail" class="page">
+      <button class="back-btn" onclick="showPage('learn')">
+        ← Back to Lessons
+      </button>
+
+      <div id="lessonContent"></div>
+    </section>
+
+    <!-- FLASHCARDS PAGE -->
+    <section id="flashcards" class="page">
+      <div class="section-heading">
+        <div class="eyebrow">Vocabulary Builder</div>
+        <h1>Flashcards</h1>
+        <p>
+          Tap the card to reveal the meaning.
+          Tekan kartu untuk melihat arti kata.
+        </p>
+      </div>
+
+      <div class="flashcard-area">
+        <div class="muted" id="flashCounter">Card 1 of 15</div>
+
+        <div class="progress-track">
+          <div class="progress-fill" id="flashProgress"></div>
+        </div>
+
+        <div
+          class="flashcard"
+          id="flashcard"
+          role="button"
+          tabindex="0"
+          aria-label="Flashcard. Press to reveal the meaning."
+          onclick="flipFlashcard()"
+          onkeydown="handleFlashcardKey(event)"
+        >
+          <div id="flashSideLabel" class="eyebrow">English Word</div>
+          <div class="word" id="flashWord">Learn</div>
+          <div class="translation" id="flashTranslation"></div>
+          <div class="example" id="flashExample"></div>
+          <div class="flash-hint" id="flashHint">
+            Tap to reveal the meaning
+          </div>
+
+          <button class="primary-btn"
+            onclick="event.stopPropagation(); speakWord()">
+            🔊 Listen to Pronunciation
+          </button>
+        </div>
+
+        <div class="flash-controls">
+          <button class="secondary-btn" onclick="previousFlashcard()">
+            ← Previous
+          </button>
+
+          <button class="primary-btn" onclick="nextFlashcard()">
+            Next →
+          </button>
+        </div>
+
+        <div class="button-row" style="justify-content:center">
+          <button class="secondary-btn" onclick="shuffleFlashcards()">
+            🔀 Shuffle Cards
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRACTICE PAGE -->
+    <section id="practice" class="page">
+      <div class="section-heading">
+        <div class="eyebrow">Test Your Understanding</div>
+        <h1>Practice</h1>
+        <p>
+          Choose a quiz and answer five questions.
+          Pilih latihan untuk menguji pemahamanmu.
+        </p>
+      </div>
+
+      <div class="grid" id="practiceGrid"></div>
+
+      <div id="quizArea" style="margin-top:30px"></div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>SilverLining</strong> — Learn English, One Step at a Time.
+      <br>
+      Keep learning. Keep growing.
+    </div>
+  </footer>
+
+  <script>
+    /* =================================
+       LESSON DATA
+    ================================= */
+
+    const lessons = [
+      {
+        id: "common",
+        number: "01",
+        title: "Common Words",
+        subtitle: "Kosakata Umum",
+        description: "Learn useful English words for everyday situations.",
+        intro: "Pelajari kosakata bahasa Inggris yang sering digunakan dalam kehidupan sehari-hari.",
+        goals: [
+          "Recognize common English vocabulary.",
+          "Memahami arti kosakata umum.",
+          "Use simple words in everyday contexts."
+        ],
+        explanation: [
+          "Vocabulary is a collection of words that we know and use.",
+          "Kosakata adalah kumpulan kata yang kita ketahui dan gunakan.",
+          "Learning common words helps you understand simple sentences and conversations."
+        ],
+        examples: [
+          ["Book", "Buku", "I read a book.", "Saya membaca sebuah buku."],
+          ["Friend", "Teman", "She is my friend.", "Dia adalah teman saya."],
+          ["Happy", "Senang", "I am happy today.", "Saya senang hari ini."]
+        ],
+        remember: "Learn a few words every day. Try to use each new word in a sentence.",
+        rememberId: "Pelajari beberapa kata setiap hari. Cobalah menggunakan setiap kata baru dalam sebuah kalimat."
+      },
+      {
+        id: "structure",
+        number: "02",
+        title: "Basic Sentence Structure",
+        subtitle: "Struktur Kalimat Dasar",
+        description: "Understand how to build simple English sentences.",
+        intro: "Pelajari susunan dasar kalimat bahasa Inggris.",
+        goals: [
+          "Identify the subject and verb.",
+          "Mengenali subjek dan kata kerja.",
+          "Build simple sentences using a basic pattern."
+        ],
+        explanation: [
+          "A simple English sentence often follows this pattern:",
+          "Kalimat bahasa Inggris sederhana sering menggunakan pola berikut:",
+          "Subject + Verb + Object",
+          "Subject (subjek) is the person or thing doing the action.",
+          "Verb (kata kerja) describes an action or state.",
+          "Object (objek) receives the action."
+        ],
+        examples: [
+          ["I eat rice.", "Saya makan nasi.", "I = Subject, eat = Verb, rice = Object.", "I = Subjek, eat = kata kerja, rice = objek."],
+          ["She reads a book.", "Dia membaca buku.", "She = Subject, reads = Verb, a book = Object.", "She = Subjek, reads = kata kerja, a book = objek."],
+          ["They play football.", "Mereka bermain sepak bola.", "They = Subject, play = Verb, football = Object.", "They = Subjek, play = kata kerja, football = objek."]
+        ],
+        remember: "A sentence usually needs a subject and a verb. Some sentences also have an object.",
+        rememberId: "Kalimat biasanya membutuhkan subjek dan kata kerja. Beberapa kalimat juga memiliki objek."
+      },
+      {
+        id: "tobe",
+        number: "03",
+        title: "To Be: Am, Is, Are",
+        subtitle: "Penggunaan Am, Is, Are",
+        description: "Learn when to use am, is, and are.",
+        intro: "Am, is, dan are merupakan bentuk present dari kata kerja be.",
+        goals: [
+          "Choose am, is, or are correctly.",
+          "Memilih am, is, atau are dengan tepat.",
+          "Make simple sentences using to be."
+        ],
+        explanation: [
+          "Use AM with I.",
+          "Gunakan AM dengan I (saya).",
+          "Use IS with he, she, it, or a singular subject.",
+          "Gunakan IS dengan he, she, it, atau subjek tunggal.",
+          "Use ARE with you, we, they, or plural subjects.",
+          "Gunakan ARE dengan you, we, they, atau subjek jamak."
+        ],
+        examples: [
+          ["I am a student.", "Saya seorang siswa.", "I + am", "I + am"],
+          ["She is happy.", "Dia senang.", "She + is", "She + is"],
+          ["They are friends.", "Mereka adalah teman.", "They + are", "They + are"]
+        ],
+        remember: "I am. He/She/It is. You/We/They are.",
+        rememberId: "I am. He/She/It is. You/We/They are."
+      },
+      {
+        id: "present",
+        number: "04",
+        title: "Simple Present Tense",
+        subtitle: "Kebiasaan dan Fakta",
+        description: "Talk about habits, routines, and general facts.",
+        intro: "Simple Present Tense digunakan untuk menyatakan kebiasaan, rutinitas, dan fakta umum.",
+        goals: [
+          "Understand the use of Simple Present Tense.",
+          "Memahami penggunaan Simple Present Tense.",
+          "Make affirmative sentences about routines."
+        ],
+        explanation: [
+          "Use the Simple Present Tense for habits, routines, and facts.",
+          "Gunakan Simple Present Tense untuk kebiasaan, rutinitas, dan fakta.",
+          "With I, you, we, and they, use the base form of the verb.",
+          "Dengan I, you, we, dan they, gunakan kata kerja bentuk dasar.",
+          "With he, she, and it, usually add -s or -es to the verb.",
+          "Dengan he, she, dan it, biasanya tambahkan -s atau -es pada kata kerja."
+        ],
+        examples: [
+          ["I study English.", "Saya belajar bahasa Inggris.", "I + study", "I + study"],
+          ["She reads every day.", "Dia membaca setiap hari.", "She + reads", "She + reads"],
+          ["They play football.", "Mereka bermain sepak bola.", "They + play", "They + play"]
+        ],
+        remember: "Remember the -s or -es ending for many verbs with he, she, and it.",
+        rememberId: "Ingat akhiran -s atau -es pada banyak kata kerja yang digunakan dengan he, she, dan it."
+      },
+      {
+        id: "expressions",
+        number: "05",
+        title: "Everyday Expressions",
+        subtitle: "Ungkapan Sehari-hari",
+        description: "Use simple expressions in everyday conversations.",
+        intro: "Pelajari ungkapan sederhana yang sering digunakan dalam percakapan.",
+        goals: [
+          "Recognize common everyday expressions.",
+          "Mengenali ungkapan sehari-hari.",
+          "Choose suitable expressions for simple situations."
+        ],
+        explanation: [
+          "Expressions are phrases that people commonly use in conversations.",
+          "Expressions adalah ungkapan yang sering digunakan dalam percakapan.",
+          "Different situations may require different expressions.",
+          "Situasi yang berbeda dapat membutuhkan ungkapan yang berbeda."
+        ],
+        examples: [
+          ["Good morning!", "Selamat pagi!", "Good morning! How are you?", "Selamat pagi! Apa kabar?"],
+          ["Thank you.", "Terima kasih.", "Thank you for your help.", "Terima kasih atas bantuanmu."],
+          ["Excuse me.", "Permisi.", "Excuse me, where is the library?", "Permisi, di mana perpustakaan?"]
+        ],
+        remember: "Think about the situation and the person you are talking to.",
+        rememberId: "Perhatikan situasi dan orang yang sedang kamu ajak bicara."
+      },
+      {
+        id: "sentences",
+        number: "06",
+        title: "Making Simple Sentences",
+        subtitle: "Membuat Kalimat Sederhana",
+        description: "Combine words to express simple ideas.",
+        intro: "Gunakan kosakata dan pola kalimat dasar untuk menyampaikan ide sederhana.",
+        goals: [
+          "Arrange words into simple sentences.",
+          "Menyusun kata menjadi kalimat sederhana.",
+          "Write sentences about everyday life."
+        ],
+        explanation: [
+          "Start with a subject, then add a suitable verb.",
+          "Mulailah dengan subjek, lalu tambahkan kata kerja yang sesuai.",
+          "Add an object or extra information when needed.",
+          "Tambahkan objek atau informasi lain jika diperlukan.",
+          "Check that the sentence makes sense.",
+          "Pastikan kalimat memiliki makna yang jelas."
+        ],
+        examples: [
+          ["I like music.", "Saya menyukai musik.", "Subject + Verb + Object", "Subjek + Kata kerja + Objek"],
+          ["We study at school.", "Kami belajar di sekolah.", "Subject + Verb + Place", "Subjek + Kata kerja + Tempat"],
+          ["He is my brother.", "Dia adalah saudara laki-laki saya.", "Subject + To Be + Information", "Subjek + To Be + Keterangan"]
+        ],
+        remember: "Start with short sentences. You can make them longer as you learn more.",
+        rememberId: "Mulailah dengan kalimat pendek. Kamu bisa membuatnya lebih panjang seiring bertambahnya pengetahuan."
+      }
+    ];
+
+    /* =================================
+       VOCABULARY DATA
+    ================================= */
+
+    const vocabulary = [
+      ["Book", "Buku", "I read a book.", "Saya membaca sebuah buku."],
+      ["School", "Sekolah", "I go to school.", "Saya pergi ke sekolah."],
+      ["Friend", "Teman", "He is my friend.", "Dia adalah teman saya."],
+      ["Family", "Keluarga", "I love my family.", "Saya menyayangi keluarga saya."],
+      ["Water", "Air", "I drink water.", "Saya minum air."],
+      ["Food", "Makanan", "The food is delicious.", "Makanan itu lezat."],
+      ["Happy", "Senang", "I am happy today.", "Saya senang hari ini."],
+      ["Beautiful", "Indah / Cantik", "The flower is beautiful.", "Bunga itu indah."],
+      ["Learn", "Belajar", "I learn English.", "Saya belajar bahasa Inggris."],
+      ["Read", "Membaca", "I read every night.", "Saya membaca setiap malam."],
+      ["Write", "Menulis", "I write in my notebook.", "Saya menulis di buku catatan."],
+      ["Listen", "Mendengarkan", "I listen to music.", "Saya mendengarkan musik."],
+      ["Speak", "Berbicara", "I speak English.", "Saya berbicara bahasa Inggris."],
+      ["Understand", "Memahami", "I understand the lesson.", "Saya memahami pelajaran."],
+      ["Improve", "Meningkatkan", "I want to improve my English.", "Saya ingin meningkatkan bahasa Inggris saya."]
+    ];
+
+    /* =================================
+       QUIZ DATA
+    ================================= */
+
+    const quizzes = {
+      general: {
+        title: "General English",
+        subtitle: "Kosakata dan dasar bahasa Inggris",
+        questions: [
+          {
+            q: "What is the meaning of 'Book'?",
+            id: "Apa arti dari 'Book'?",
+            options: ["Meja", "Buku", "Pintu", "Kursi"],
+            answer: 1,
+            explanation: "Book berarti buku."
+          },
+          {
+            q: "Choose the correct sentence.",
+            id: "Pilih kalimat yang benar.",
+            options: [
+              "She are happy.",
+              "She am happy.",
+              "She is happy.",
+              "She be happy."
+            ],
+            answer: 2,
+            explanation: "She menggunakan is: She is happy."
+          },
+          {
+            q: "What is the meaning of 'Thank you'?",
+            id: "Apa arti dari 'Thank you'?",
+            options: [
+              "Sampai jumpa",
+              "Selamat pagi",
+              "Terima kasih",
+              "Permisi"
+            ],
+            answer: 2,
+            explanation: "Thank you berarti terima kasih."
+          },
+          {
+            q: "Complete: They ___ students.",
+            id: "Lengkapi: Mereka adalah siswa.",
+            options: ["am", "is", "are", "be"],
+            answer: 2,
+            explanation: "They menggunakan are."
+          },
+          {
+            q: "Choose the correct sentence.",
+            id: "Pilih kalimat yang benar.",
+            options: [
+              "He play football.",
+              "He plays football.",
+              "He playing football.",
+              "He are play football."
+            ],
+            answer: 1,
+            explanation: "Dalam Simple Present, he biasanya menggunakan verb + s."
+          }
+        ]
+      },
+
+      structure: {
+        title: "Basic Sentence Structure",
+        subtitle: "Struktur Kalimat Dasar",
+        questions: [
+          {
+            q: "Which word is the subject in 'I eat rice'?",
+            id: "Kata manakah yang menjadi subjek dalam 'I eat rice'?",
+            options: ["I", "eat", "rice", "the"],
+            answer: 0,
+            explanation: "I adalah subjek atau pelaku."
+          },
+          {
+            q: "Which word is the verb in 'She reads a book'?",
+            id: "Kata manakah yang menjadi kata kerja?",
+            options: ["She", "reads", "a", "book"],
+            answer: 1,
+            explanation: "Reads adalah kata kerja."
+          },
+          {
+            q: "Choose the correct sentence.",
+            id: "Pilih kalimat yang benar.",
+            options: [
+              "Eat I rice.",
+              "Rice I eat.",
+              "I eat rice.",
+              "I rice eat."
+            ],
+            answer: 2,
+            explanation: "Pola dasarnya adalah Subject + Verb + Object."
+          },
+          {
+            q: "In 'They play football', what is the object?",
+            id: "Apa objek dalam kalimat tersebut?",
+            options: ["They", "play", "football", "are"],
+            answer: 2,
+            explanation: "Football adalah objek."
+          },
+          {
+            q: "What usually comes first in a basic English sentence?",
+            id: "Apa yang biasanya berada di awal kalimat dasar?",
+            options: ["Object", "Subject", "Adverb", "Question mark"],
+            answer: 1,
+            explanation: "Kalimat dasar biasanya dimulai dengan subjek."
+          }
+        ]
+      },
+
+      tobe: {
+        title: "To Be: Am, Is, Are",
+        subtitle: "Penggunaan Am, Is, Are",
+        questions: [
+          {
+            q: "I ___ a student.",
+            id: "Saya seorang siswa.",
+            options: ["is", "are", "am", "be"],
+            answer: 2,
+            explanation: "I menggunakan am."
+          },
+          {
+            q: "She ___ my friend.",
+            id: "Dia adalah teman saya.",
+            options: ["am", "is", "are", "be"],
+            answer: 1,
+            explanation: "She menggunakan is."
+          },
+          {
+            q: "They ___ happy.",
+            id: "Mereka senang.",
+            options: ["am", "is", "are", "be"],
+            answer: 2,
+            explanation: "They menggunakan are."
+          },
+          {
+            q: "We ___ ready.",
+            id: "Kami siap.",
+            options: ["am", "is", "are", "be"],
+            answer: 2,
+            explanation: "We menggunakan are."
+          },
+          {
+            q: "He ___ a teacher.",
+            id: "Dia seorang guru.",
+            options: ["am", "is", "are", "be"],
+            answer: 1,
+            explanation: "He menggunakan is."
+          }
+        ]
+      },
+
+      present: {
+        title: "Simple Present Tense",
+        subtitle: "Kebiasaan dan Fakta",
+        questions: [
+          {
+            q: "I ___ English every day.",
+            id: "Saya belajar bahasa Inggris setiap hari.",
+            options: ["studies", "study", "studying", "is study"],
+            answer: 1,
+            explanation: "I menggunakan bentuk dasar kata kerja: study."
+          },
+          {
+            q: "She ___ to school every morning.",
+            id: "Dia pergi ke sekolah setiap pagi.",
+            options: ["go", "goes", "going", "are go"],
+            answer: 1,
+            explanation: "She menggunakan goes."
+          },
+          {
+            q: "They ___ football on Sundays.",
+            id: "Mereka bermain sepak bola pada hari Minggu.",
+            options: ["plays", "playing", "play", "is play"],
+            answer: 2,
+            explanation: "They menggunakan kata kerja dasar: play."
+          },
+          {
+            q: "He ___ a book every night.",
+            id: "Dia membaca buku setiap malam.",
+            options: ["read", "reads", "reading", "are reading"],
+            answer: 1,
+            explanation: "He menggunakan reads."
+          },
+          {
+            q: "Which sentence expresses a habit?",
+            id: "Kalimat mana yang menyatakan kebiasaan?",
+            options: [
+              "I study every evening.",
+              "I studied yesterday.",
+              "I am studying now.",
+              "I will study tomorrow."
+            ],
+            answer: 0,
+            explanation: "Every evening menunjukkan kebiasaan."
+          }
+        ]
+      },
+
+      expressions: {
+        title: "Everyday Expressions",
+        subtitle: "Ungkapan Sehari-hari",
+        questions: [
+          {
+            q: "What do you say when someone helps you?",
+            id: "Apa yang kamu katakan ketika seseorang membantumu?",
+            options: [
+              "Thank you.",
+              "Good night.",
+              "Excuse me.",
+              "Goodbye."
+            ],
+            answer: 0,
+            explanation: "Thank you digunakan untuk berterima kasih."
+          },
+          {
+            q: "What is a common greeting in the morning?",
+            id: "Apa salam yang umum digunakan pada pagi hari?",
+            options: [
+              "Good night",
+              "Good morning",
+              "Goodbye",
+              "See you"
+            ],
+            answer: 1,
+            explanation: "Good morning berarti selamat pagi."
+          },
+          {
+            q: "What can you say before asking someone a question politely?",
+            id: "Apa ungkapan untuk memulai pertanyaan dengan sopan?",
+            options: [
+              "Excuse me",
+              "Good night",
+              "You're welcome",
+              "See you"
+            ],
+            answer: 0,
+            explanation: "Excuse me dapat digunakan untuk menarik perhatian dengan sopan."
+          },
+          {
+            q: "Someone says 'Thank you'. You can reply:",
+            id: "Seseorang berkata 'Thank you'. Kamu bisa menjawab:",
+            options: [
+              "I'm sorry",
+              "You're welcome",
+              "Good morning",
+              "Excuse me"
+            ],
+            answer: 1,
+            explanation: "You're welcome adalah jawaban umum untuk Thank you."
+          },
+          {
+            q: "What do you say when leaving a friend?",
+            id: "Apa yang kamu katakan ketika berpisah dengan teman?",
+            options: [
+              "Goodbye",
+              "Thank you",
+              "Good morning",
+              "Excuse me"
+            ],
+            answer: 0,
+            explanation: "Goodbye berarti selamat tinggal."
+          }
+        ]
+      },
+
+      sentences: {
+        title: "Making Simple Sentences",
+        subtitle: "Membuat Kalimat Sederhana",
+        questions: [
+          {
+            q: "Arrange the words: 'English / I / study'",
+            id: "Susun kata-kata tersebut menjadi kalimat yang benar.",
+            options: [
+              "English study I.",
+              "Study English I.",
+              "I study English.",
+              "I English study."
+            ],
+            answer: 2,
+            explanation: "Susunannya: I + study + English."
+          },
+          {
+            q: "Choose the correct sentence.",
+            id: "Pilih kalimat yang benar.",
+            options: [
+              "My friend kind is.",
+              "My friend is kind.",
+              "Is kind my friend.",
+              "My is friend kind."
+            ],
+            answer: 1,
+            explanation: "My friend is kind berarti teman saya baik."
+          },
+          {
+            q: "Complete: We ___ at school.",
+            id: "Lengkapi: Kami belajar di sekolah.",
+            options: ["study", "studies", "studying", "is study"],
+            answer: 0,
+            explanation: "We menggunakan kata kerja dasar: study."
+          },
+          {
+            q: "Which sentence means 'Saya menyukai musik'?",
+            id: "Pilih terjemahan yang benar.",
+            options: [
+              "I listen music.",
+              "I like music.",
+              "I music like.",
+              "I am like music."
+            ],
+            answer: 1,
+            explanation: "I like music berarti saya menyukai musik."
+          },
+          {
+            q: "Complete: He ___ my brother.",
+            id: "Lengkapi: Dia adalah saudara laki-laki saya.",
+            options: ["am", "are", "is", "be"],
+            answer: 2,
+            explanation: "He menggunakan is."
+          }
+        ]
+      }
+    };
+
+    /* =================================
+       NAVIGATION
+    ================================= */
+
+    function showPage(pageId) {
+      document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+      });
+
+      const target = document.getElementById(pageId);
+
+      if (target) {
+        target.classList.add("active");
+      }
+
+      document.querySelectorAll(".nav-btn").forEach(button => {
+        button.classList.toggle(
+          "active",
+          button.dataset.page === pageId
+        );
+      });
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+
+    /* =================================
+       RENDER LESSON CARDS
+    ================================= */
+
+    function renderLessons() {
+      const grid = document.getElementById("lessonGrid");
+
+      grid.innerHTML = lessons.map(lesson => `
+        <div class="card topic-card">
+          <div class="topic-number">${lesson.number}</div>
+          <div class="level-label">Beginner</div>
+          <h3>${lesson.title}</h3>
+          <p>${lesson.subtitle}</p>
+          <p>${lesson.description}</p>
+          <button class="secondary-btn"
+            onclick="openLesson('${lesson.id}')">
+            Start Lesson →
+          </button>
+        </div>
+      `).join("");
+    }
+
+    /* =================================
+       OPEN LESSON
+    ================================= */
+
+    function openLesson(lessonId) {
+      if (lessonId === "common") {
+        showPage("flashcards");
+        return;
+      }
+
+      const lesson = lessons.find(item => item.id === lessonId);
+
+      if (!lesson) return;
+
+      const goals = lesson.goals.map(goal =>
+        `<li>${goal}</li>`
+      ).join("");
+
+      const explanations = lesson.explanation.map(item =>
+        `<p>${item}</p>`
+      ).join("");
+
+      const examples = lesson.examples.map(item => `
+        <div class="example-box">
+          <p>
+            <strong>${item[0]}</strong>
+            <button class="secondary-btn"
+              onclick="speakText(${JSON.stringify(item[0]).replace(/</g, '\\u003c')})">
+              🔊 Listen
+            </button>
+          </p>
+          <p class="muted">${item[1]}</p>
+          <p>${item[2]}</p>
+          <p class="muted">${item[3]}</p>
+        </div>
+      `).join("");
+
+      document.getElementById("lessonContent").innerHTML = `
+        <div class="lesson-header">
+          <div class="eyebrow">Lesson ${lesson.number} · Beginner</div>
+          <h1>${lesson.title}</h1>
+          <p>${lesson.subtitle}</p>
+          <p>${lesson.intro}</p>
+
+          <div class="button-row">
+            <button class="primary-btn"
+              onclick="startQuiz('${lesson.id}')">
+              Start Practice →
+            </button>
+
+            <button class="secondary-btn"
+              onclick="showPage('flashcards')">
+              Review Vocabulary
+            </button>
+          </div>
+        </div>
+
+        <div class="card lesson-section">
+          <h2>🎯 Learning Goals</h2>
+          <p>After this lesson, you will be able to:</p>
+          <ul>${goals}</ul>
+        </div>
+
+        <div class="card lesson-section">
+          <h2>📖 Lesson</h2>
+          ${explanations}
+        </div>
+
+        <div class="card lesson-section">
+          <h2>💡 Examples</h2>
+          ${examples}
+        </div>
+
+        <div class="remember-box">
+          <h3>⭐ Remember This!</h3>
+          <p>${lesson.remember}</p>
+          <p>${lesson.rememberId}</p>
+        </div>
+
+        <div class="button-row">
+          <button class="primary-btn"
+            onclick="startQuiz('${lesson.id}')">
+            Practice This Topic →
+          </button>
+
+          <button class="secondary-btn"
+            onclick="showPage('learn')">
+            Back to Lessons
+          </button>
+        </div>
+      `;
+
+      showPage("lessonDetail");
+    }
+
+    /* =================================
+       FLASHCARDS
+    ================================= */
+
+    let flashIndex = 0;
+    let isFlipped = false;
+    let flashOrder = vocabulary.map((_, index) => index);
+
+    function renderFlashcard() {
+      const item = vocabulary[flashOrder[flashIndex]];
+
+      document.getElementById("flashCounter").textContent =
+        `Card ${flashIndex + 1} of ${flashOrder.length}`;
+
+      document.getElementById("flashProgress").style.width =
+        `${((flashIndex + 1) / flashOrder.length) * 100}%`;
+
+      document.getElementById("flashWord").textContent = item[0];
+
+      document.getElementById("flashSideLabel").textContent =
+        isFlipped ? "Indonesian Meaning" : "English Word";
+
+      document.getElementById("flashTranslation").textContent =
+        isFlipped ? item[1] : "";
+
+      document.getElementById("flashExample").textContent =
+        isFlipped ? `${item[2]} — ${item[3]}` : "";
+
+      document.getElementById("flashHint").textContent =
+        isFlipped
+          ? "Tap to see the word again"
+          : "Tap to reveal the meaning";
+    }
+
+    function flipFlashcard() {
+      isFlipped = !isFlipped;
+      renderFlashcard();
+    }
+
+    function handleFlashcardKey(event) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        flipFlashcard();
+      }
+    }
+
+    function nextFlashcard() {
+      flashIndex = (flashIndex + 1) % flashOrder.length;
+      isFlipped = false;
+      renderFlashcard();
+    }
+
+    function previousFlashcard() {
+      flashIndex =
+        (flashIndex - 1 + flashOrder.length) % flashOrder.length;
+      isFlipped = false;
+      renderFlashcard();
+    }
+
+    function shuffleFlashcards() {
+      for (let i = flashOrder.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [flashOrder[i], flashOrder[j]] =
+          [flashOrder[j], flashOrder[i]];
+      }
+
+      flashIndex = 0;
+      isFlipped = false;
+      renderFlashcard();
+    }
+
+    /* =================================
+       TEXT-TO-SPEECH
+    ================================= */
+
+    function speakText(text) {
+      if (!("speechSynthesis" in window)) {
+        alert("Sorry, your browser does not support audio.");
+        return;
+      }
+
+      window.speechSynthesis.cancel();
+
+      const speech = new SpeechSynthesisUtterance(text);
+      speech.lang = "en-US";
+      speech.rate = 0.85;
+      speech.pitch = 1;
+
+      window.speechSynthesis.speak(speech);
+    }
+
+    function speakWord() {
+      const word = vocabulary[flashOrder[flashIndex]][0];
+      speakText(word);
+    }
+
+    /* =================================
+       PRACTICE MENU
+    ================================= */
+
+    function renderPracticeMenu() {
+      const practiceList = [
+        {
+          id: "general",
+          title: "General English",
+          description: "Kosakata dan dasar bahasa Inggris"
+        },
+        ...lessons
+          .filter(lesson => lesson.id !== "common")
+          .map(lesson => ({
+            id: lesson.id,
+            title: lesson.title,
+            description: lesson.subtitle
+          }))
+      ];
+
+      document.getElementById("practiceGrid").innerHTML =
+        practiceList.map(item => `
+          <button class="practice-topic-btn"
+            onclick="startQuiz('${item.id}')">
+            ${item.title}
+            <span>${item.description} · 5 questions</span>
+          </button>
+        `).join("");
+    }
+
+    /* =================================
+       QUIZ ENGINE
+    ================================= */
+
+    let currentQuiz = null;
+    let currentQuestion = 0;
+    let quizScore = 0;
+    let questionAnswered = false;
+
+    function startQuiz(quizId) {
+      const quiz = quizzes[quizId];
+
+      if (!quiz) return;
+
+      currentQuiz = quiz;
+      currentQuestion = 0;
+      quizScore = 0;
+      questionAnswered = false;
+
+      showPage("practice");
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const area = document.getElementById("quizArea");
+
+      if (currentQuestion >= currentQuiz.questions.length) {
+        showQuizResult();
+        return;
+      }
+
+      const question = currentQuiz.questions[currentQuestion];
+
+      area.innerHTML = `
+        <div class="card quiz-card">
+          <div class="quiz-top">
+            <span>${currentQuiz.title}</span>
+            <span>
+              Question ${currentQuestion + 1}
+              of ${currentQuiz.questions.length}
+            </span>
+          </div>
+
+          <div class="progress-track">
+            <div class="progress-fill"
+              style="width:${
+                (currentQuestion / currentQuiz.questions.length) * 100
+              }%">
+            </div>
+          </div>
+
+          <div class="question">${question.q}</div>
+          <div class="question-translation">${question.id}</div>
+
+          <div class="options">
+            ${question.options.map((option, index) => `
+              <button class="option-btn"
+                id="option-${index}"
+                onclick="answerQuestion(${index})">
+                ${String.fromCharCode(65 + index)}. ${option}
+              </button>
+            `).join("")}
+          </div>
+
+          <div class="feedback" id="quizFeedback"></div>
+
+          <div class="button-row">
+            <button class="primary-btn"
+              id="nextQuestionBtn"
+              onclick="nextQuestion()"
+              disabled>
+              ${currentQuestion === currentQuiz.questions.length - 1
+                ? "See Results →"
+                : "Next Question →"}
+            </button>
+          </div>
+        </div>
+      `;
+
+      questionAnswered = false;
+    }
+
+    function answerQuestion(selectedIndex) {
+      if (questionAnswered) return;
+
+      questionAnswered = true;
+
+      const question = currentQuiz.questions[currentQuestion];
+      const isCorrect = selectedIndex === question.answer;
+
+      if (isCorrect) {
+        quizScore++;
+      }
+
+      question.options.forEach((_, index) => {
+        const button = document.getElementById(`option-${index}`);
+        button.disabled = true;
+
+        if (index === question.answer) {
+          button.classList.add("correct");
+        } else if (index === selectedIndex) {
+          button.classList.add("incorrect");
+        }
+      });
+
+      const feedback = document.getElementById("quizFeedback");
+      feedback.className =
+        `feedback show ${isCorrect ? "good" : "bad"}`;
+
+      feedback.innerHTML = `
+        <strong>${isCorrect ? "Correct! ✓" : "Not quite."}</strong>
+        <p>${question.explanation}</p>
+        ${!isCorrect
+          ? `<p>Correct answer: <strong>${question.options[question.answer]}</strong></p>`
+          : ""}
+      `;
+
+      document.getElementById("nextQuestionBtn").disabled = false;
+    }
+
+    function nextQuestion() {
+      if (!questionAnswered) return;
+
+      currentQuestion++;
+      renderQuestion();
+    }
+
+    function showQuizResult() {
+      const total = currentQuiz.questions.length;
+      const percentage = Math.round((quizScore / total) * 100);
+
+      let message = "";
+
+      if (percentage === 100) {
+        message = "Excellent! Semua jawabanmu benar. Great job!";
+      } else if (percentage >= 60) {
+        message = "Good work! Terus berlatih untuk meningkatkan pemahamanmu.";
+      } else {
+        message = "Keep learning! Coba pelajari materinya lagi dan ulangi latihan.";
+      }
+
+      document.getElementById("quizArea").innerHTML = `
+        <div class="card quiz-card result-box">
+          <div class="eyebrow">Practice Completed</div>
+          <h2>${currentQuiz.title}</h2>
+          <div class="result-score">${quizScore}/${total}</div>
+          <p>${percentage}% correct answers</p>
+          <p>${message}</p>
+
+          <div class="button-row" style="justify-content:center">
+            <button class="primary-btn"
+              onclick="startQuizByTitle()">
+              Try Again
+            </button>
+
+            <button class="secondary-btn"
+              onclick="clearQuiz(); showPage('learn')">
+              Review Lessons
+            </button>
+
+            <button class="secondary-btn"
+              onclick="clearQuiz(); showPage('practice')">
+              All Quizzes
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    function startQuizByTitle() {
+      const quizId = Object.keys(quizzes).find(
+        key => quizzes[key] === currentQuiz
+      );
+
+      if (quizId) {
+        startQuiz(quizId);
+      }
+    }
+
+    function clearQuiz() {
+      document.getElementById("quizArea").innerHTML = "";
+      currentQuiz = null;
+    }
+
+    /* =================================
+       INITIALIZE WEBSITE
+    ================================= */
+
+    renderLessons();
+    renderFlashcard();
+    renderPracticeMenu();
+  </script>
+
+</body>
+  </html>
